@@ -32,14 +32,14 @@ public abstract class PageBase {
 
     }
      public void navigateTo(String tabName) {
-           String tabNameXpath = "//span[@class='feed-add-post-form-link' and contains(text(),'" + tabName + "')]";
+           String tabNameXpath = "//span[contains(@class,'feed-add-post-form-')]/span[text()='"+tabName+"']";
            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(tabNameXpath)))).click();
     }
-    public void navigateToMessage(String messageTab){
-        BrowserUtils.waitForPageToLoad(10);
-        String messagesTab="//span[@class='feed-add-post-form-link feed-add-post-form-link-active' and contains(text(),'"+messageTab+"')]";
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(messageTab)))).click();
-    }
+
+
+//        //"//span[contains(@class,"feed-add-post-form-")]/span[text()='"+tabName+"']"
+//        ////span[contains(@class,“feed-add-post-form-“)]/span[text()=“......module name here...........“]
+//    }
 
     /**
      * This method will run search function based on provided String value
