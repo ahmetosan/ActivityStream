@@ -54,7 +54,7 @@ public String getAnnounceMessage(){
     }
 
     public String enteringText(){
-        String sendWord = "Sended By HasanMammadov";
+        String sendWord = "Send By HasanMammadov";
         return sendWord;
     }
 
