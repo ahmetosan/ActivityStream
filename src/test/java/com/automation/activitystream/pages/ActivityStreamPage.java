@@ -27,8 +27,7 @@ public class ActivityStreamPage extends PageBase{
     @FindBy(css = "[id='blog-submit-button-save']")
     private WebElement sendButton;
 
-    @FindBy(xpath = "//div[@class='feed-post-text-block feed-info-block']//div[text()='xvxvc']")
-    private WebElement AnnouncementMessage;
+
 
 public String getAnnounceMessage(){
     String result = enteringText();
@@ -55,7 +54,7 @@ public String getAnnounceMessage(){
     }
 
     public String enteringText(){
-        String sendWord = "Sended By Hasan";
+        String sendWord = "Sended By HasanMammadov";
         return sendWord;
     }
 
