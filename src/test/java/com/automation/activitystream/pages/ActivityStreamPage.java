@@ -1,10 +1,20 @@
 package com.automation.activitystream.pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import utilities.BrowserUtils;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 public class ActivityStreamPage extends PageBase{
 
@@ -32,6 +42,7 @@ public class ActivityStreamPage extends PageBase{
 public String getAnnounceMessage(){
     String result = enteringText();
     String messageXpath = "//div[@class='feed-post-text-block feed-info-block']//div[text()='"+result+"']";
+
     WebElement msg = driver.findElement(By.xpath(messageXpath));
 
     return msg.getText();
@@ -54,15 +65,20 @@ public String getAnnounceMessage(){
     }
 
     public String enteringText(){
-        String sendWord = "Send By HasanMammadov";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+
+        String sendWord = "Hasan"+dtf.format(now);
+
         return sendWord;
     }
 
     public void sendTextAnnouncement(){
         driver.switchTo().frame(announcementIframe);
         BrowserUtils.waitForPageToLoad(12);
-
         announcementTextBox.sendKeys(enteringText());
+
         BrowserUtils.waitForPageToLoad(12);
 
         driver.switchTo().defaultContent();
