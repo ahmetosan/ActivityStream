@@ -50,7 +50,7 @@ public abstract class TestBase { protected WebDriverWait wait;
 
     @BeforeMethod
     public void setup() {
-        String URL = ConfigurationReader.getProperty("qa3");
+        String URL = ConfigurationReader.getProperty("web");
         Driver.getDriver().get(URL);
         Driver.getDriver().manage().window().maximize();
         wait = new WebDriverWait(Driver.getDriver(), 25);
