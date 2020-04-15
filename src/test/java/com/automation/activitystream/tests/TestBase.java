@@ -13,7 +13,8 @@ import utilities.ConfigurationReader;
 import utilities.Driver;
 import java.io.IOException;
 
-public abstract class TestBase { protected WebDriverWait wait;
+public abstract class TestBase {
+    protected WebDriverWait wait;
     protected Actions actions;
     protected ExtentReports report;
     protected ExtentHtmlReporter htmlReporter;
