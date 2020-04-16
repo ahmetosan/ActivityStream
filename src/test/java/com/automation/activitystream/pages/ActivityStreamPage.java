@@ -7,14 +7,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import utilities.BrowserUtils;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+
 
 public class ActivityStreamPage extends PageBase{
 
@@ -52,6 +47,8 @@ public String getAnnounceMessage(){
     public void clickMoreButton(){
         BrowserUtils.waitForPageToLoad(12);
         moreButton.click();
+
+
     }
 
     public void clickAnnouncement(){

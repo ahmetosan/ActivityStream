@@ -27,10 +27,7 @@ public class ActivityStreamTest extends TestBase{
         Assert.assertEquals(actual,activityStreamPage.enteringText());
         test.pass("User successfully sent announcement from Announcement subheading from \"More\" under Activity Stream. ");
 
-
-
-
-
-
     }
+
+
 }
