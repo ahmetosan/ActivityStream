@@ -47,6 +47,26 @@ public class TaskTests extends TestBase{
         test.pass("User succesfully clicked on visual editor and system displayed editor text-bar");
     }
 
+
+    /**
+     * Ahmet OZDEMIR
+     * 10. User can click on More to specify the task details.
+     */
+
+    @Test
+    public void LastOne(){
+        test=report.createTest("Verify if more options is clickable");
+        LoginPage loginPage=new LoginPage();
+        loginPage.login();
+
+        TaskPage taskPage=new TaskPage();
+        taskPage.navigateTo("Task");
+        taskPage.clickOnMore();
+
+        Assert.assertTrue(taskPage.clickOnMore().isEnabled());
+        test.pass("User succesfully clicked the ");
+    }
+
 //    @Test
 //    public void getCurrentDeadLine(){
 //        LoginPage loginPage=new LoginPage();

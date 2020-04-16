@@ -9,7 +9,6 @@ import utilities.BrowserUtils;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Random;
 
 public class TaskPage extends PageBase {
 
@@ -31,6 +30,9 @@ public class TaskPage extends PageBase {
     @FindBy(id="bx-html-editor-tlbr-lifefeed_task_form")
     protected WebElement textBar;
 
+    @FindBy(xpath = "//div[@class='task-additional-alt-more']")
+    protected WebElement moreOption;
+
     public void clickOnCheckBox(){
         BrowserUtils.waitForPageToLoad(15);
        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("feed-add-post-form-tab-tasks")));
@@ -45,12 +47,11 @@ public class TaskPage extends PageBase {
         return textBar;
     }
 
-
-        public void clickOnDeadLine(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("feed-add-post-form-tab-tasks")));
-        wait.until(ExpectedConditions.elementToBeClickable(deadLine)).click();
-        List<WebElement>months=driver.findElements(By.cssSelector("[class='bx-calendar-month-content']"));
-        months.get(3).click();
+    public void clickOnDeadLine(){
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("feed-add-post-form-tab-tasks")));
+    wait.until(ExpectedConditions.elementToBeClickable(deadLine)).click();
+    List<WebElement>months=driver.findElements(By.cssSelector("[class='bx-calendar-month-content']"));
+    months.get(3).click();
 
 //        Random random=new Random();
 //        int randomMonth=random.nextInt(11);
@@ -73,5 +74,10 @@ public class TaskPage extends PageBase {
         return periorityCheckBox;
     }
 
+    public WebElement clickOnMore(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='task-additional-alt-more']")));
+        moreOption.click();
+        return moreOption;
+    }
 
 }
