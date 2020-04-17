@@ -12,6 +12,7 @@ import utilities.BrowserUtils;
 import utilities.Driver;
 
 public abstract class PageBase {
+
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver,20);
 
@@ -31,15 +32,17 @@ public abstract class PageBase {
         PageFactory.initElements(driver,this);
 
     }
-     public void navigateTo(String tabName) {
-           String tabNameXpath = "//span[contains(@class,'feed-add-post-form-')]/span[text()='"+tabName+"']";
-           wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(tabNameXpath)))).click();
+    public void navigateTo(String tabName) {
+        BrowserUtils.waitForPageToLoad(10);
+        String tabNameXpath = "//span[contains(@class,'feed-add-post-form-')]/span[text()='"+tabName+"']";
+        if(tabName.equals("File")|| tabName.equals("Appreciation") || tabName.equals("Announcement") || tabName.equals("Workflow")){
+            WebElement moreTab = driver.findElement(By.cssSelector("[id=\"feed-add-post-form-link-more\"]"));
+            wait.until(ExpectedConditions.elementToBeClickable(moreTab)).click();
+        }
+        WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
+        wait.until(ExpectedConditions.elementToBeClickable(tabElement)).click();
+        BrowserUtils.wait(4);
     }
-
-
-//        //"//span[contains(@class,"feed-add-post-form-")]/span[text()='"+tabName+"']"
-//        ////span[contains(@class,“feed-add-post-form-“)]/span[text()=“......module name here...........“]
-//    }
 
     /**
      * This method will run search function based on provided String value
